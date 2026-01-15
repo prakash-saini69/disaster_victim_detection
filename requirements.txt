@@ -1,30 +1,42 @@
+# ----------------------------
 # Data Science & Visualization
+# ----------------------------
 pandas
 numpy
 matplotlib
 seaborn
 scipy
 
+# ----------------------------
 # Computer Vision & YOLO
-ultralytics              # The core YOLOv8 library
-opencv-python           # For local video processing
-opencv-python-headless  # REQUIRED for Docker/AWS (prevents GUI errors on servers)
+# ----------------------------
+ultralytics
+opencv-python-headless
 
-# MLOps & Tracking
-dvc                     # Data Version Control
-mlflow                  # Experiment Tracking
-dagshub                 # Integration for MLflow & DVC storage
+# ----------------------------
+# MLOps & Experiment Tracking
+# ----------------------------
+dvc
+mlflow
+dagshub
 
+# ----------------------------
 # Web App & API
-flask                   # The web server
-flask-cors              # Handles Cross-Origin requests if needed
+# ----------------------------
+flask
+flask-cors
 
-# Utilities & Data Ingestion
-gdown                   # To download the dataset from Google Drive
-PyYAML                  # To read config.yaml and params.yaml
-box2                    # ConfigBox support (standard in your template)
-ensure                  # Type checking decorators (standard in your template)
-joblib                  # Object serialization
-types-PyYAML            # Type hints for YAML
-tqdm                    # Progress bars for long operations
+# ----------------------------
+# Utilities
+# ----------------------------
+gdown
+PyYAML
+python-box
+ensure
+joblib
+tqdm
+
+# ----------------------------
+# Project Package
+# ----------------------------
 -e .
