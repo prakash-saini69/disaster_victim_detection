@@ -1,2 +1,15 @@
 data_ingestion:
   unzip: true
+
+
+
+
+# YOLOv8 Parameters
+yolo_params:
+  epochs: 1
+  batch_size: 8   # Lower for CPU/Laptop GPU
+  imgsz: 320 
+  model_type: yolov8n.pt 
+  conf_threshold: 0.4
+  iou_threshold: 0.5
+  augmentation: True
