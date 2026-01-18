@@ -1,0 +1,51 @@
+stages:
+  data_ingestion:
+    cmd: python src/victimDetector/pipeline/stage_01_data_ingestion.py
+    deps:
+      - src/victimDetector/pipeline/stage_01_data_ingestion.py
+      - config/config.yaml
+    outs:
+      # Matches the folder extracted from your zip file
+      - artifacts/data_ingestion/C2A_Dataset
+
+  prepare_base_model:
+    cmd: python src/victimDetector/pipeline/stage_02_prepare_base_model.py
+    deps:
+      - src/victimDetector/pipeline/stage_02_prepare_base_model.py
+      - config/config.yaml
+    params:
+      # YOLO specific params from your params.yaml
+      - yolo_params.model_type
+    outs:
+      - artifacts/prepare_base_model
+
+  training:
+    cmd: python src/victimDetector/pipeline/stage_03_model_training.py
+    deps:
+      - src/victimDetector/pipeline/stage_03_model_training.py
+      - config/config.yaml
+      - artifacts/data_ingestion/C2A_Dataset
+      - artifacts/prepare_base_model
+    params:
+      - yolo_params.epochs
+      - yolo_params.batch_size
+      - yolo_params.imgsz
+      - yolo_params.augmentation
+    outs:
+      # YOLO model is .pt, not .h5
+      - artifacts/training/model.pt
+
+  evaluation:
+    cmd: python src/victimDetector/pipeline/stage_04_model_evaluation.py
+    deps:
+      - src/victimDetector/pipeline/stage_04_model_evaluation.py
+      - config/config.yaml
+      - artifacts/data_ingestion/C2A_Dataset
+      - artifacts/training/model.pt
+    params:
+      - yolo_params.imgsz
+      - yolo_params.batch_size
+      - yolo_params.conf_threshold
+    metrics:
+    - scores.json:
+        cache: false
