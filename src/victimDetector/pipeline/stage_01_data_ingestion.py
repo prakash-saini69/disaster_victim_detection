@@ -1,6 +1,6 @@
 
-from src.victimDetector.config.configuration import ConfigurationManager
-from src.victimDetector.components.data_ingestion import DataIngestion
+from victimDetector.config.configuration import ConfigurationManager
+from victimDetector.components.data_ingestion import DataIngestion
 from victimDetector import logger
 
 

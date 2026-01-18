@@ -1,8 +1,8 @@
 
 import os
 from pathlib import Path
-from src.victimDetector.constants import *
-from src.victimDetector.entity.config_entity import PrepareBaseModelConfig
+from victimDetector.constants import *
+from victimDetector.entity.config_entity import PrepareBaseModelConfig
 from ultralytics import YOLO
 
 import shutil

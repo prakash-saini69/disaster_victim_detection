@@ -1,0 +1,101 @@
+schema: '2.0'
+stages:
+  data_ingestion:
+    cmd: python src/victimDetector/pipeline/stage_01_data_ingestion.py
+    deps:
+    - path: config/config.yaml
+      hash: md5
+      md5: e2424407be2626b604c87f29e801d72a
+      size: 600
+    - path: src/victimDetector/pipeline/stage_01_data_ingestion.py
+      hash: md5
+      md5: 594da1f9212223a1cb50995def9912ab
+      size: 929
+    outs:
+    - path: artifacts/data_ingestion/C2A_Dataset
+      hash: md5
+      md5: ec379a5f2e3d7d2c30208e2fbaaa9a32.dir
+      size: 4954865672
+      nfiles: 20436
+  prepare_base_model:
+    cmd: python src/victimDetector/pipeline/stage_02_prepare_base_model.py
+    deps:
+    - path: config/config.yaml
+      hash: md5
+      md5: e2424407be2626b604c87f29e801d72a
+      size: 600
+    - path: src/victimDetector/pipeline/stage_02_prepare_base_model.py
+      hash: md5
+      md5: 3dd0fb6bb4255d1f901381e0ac3000ef
+      size: 972
+    params:
+      params.yaml:
+        yolo_params.model_type: yolov8n.pt
+    outs:
+    - path: artifacts/prepare_base_model
+      hash: md5
+      md5: ffd9e1e39876372d0693127ae26ce1df.dir
+      size: 6550008
+      nfiles: 1
+  training:
+    cmd: python src/victimDetector/pipeline/stage_03_model_training.py
+    deps:
+    - path: artifacts/data_ingestion/C2A_Dataset
+      hash: md5
+      md5: ab6ce5187981e3b33c1fef72effcb12c.dir
+      size: 4955061842
+      nfiles: 20436
+    - path: artifacts/prepare_base_model
+      hash: md5
+      md5: ffd9e1e39876372d0693127ae26ce1df.dir
+      size: 6550008
+      nfiles: 1
+    - path: config/config.yaml
+      hash: md5
+      md5: e2424407be2626b604c87f29e801d72a
+      size: 600
+    - path: src/victimDetector/pipeline/stage_03_model_training.py
+      hash: md5
+      md5: 09d68b772da608bff9c97e5c400e5e71
+      size: 890
+    params:
+      params.yaml:
+        yolo_params.augmentation: true
+        yolo_params.batch_size: 8
+        yolo_params.epochs: 4
+        yolo_params.imgsz: 320
+    outs:
+    - path: artifacts/training/model.pt
+      hash: md5
+      md5: 25754aa7f653744108787bcfcfcbdc34
+      size: 6201450
+  evaluation:
+    cmd: python src/victimDetector/pipeline/stage_04_model_evaluation.py
+    deps:
+    - path: artifacts/data_ingestion/C2A_Dataset
+      hash: md5
+      md5: ad82b78f160fc5a961b7dbeb5e7a5e5a.dir
+      size: 4956973302
+      nfiles: 20437
+    - path: artifacts/training/model.pt
+      hash: md5
+      md5: 25754aa7f653744108787bcfcfcbdc34
+      size: 6201450
+    - path: config/config.yaml
+      hash: md5
+      md5: e2424407be2626b604c87f29e801d72a
+      size: 600
+    - path: src/victimDetector/pipeline/stage_04_model_evaluation.py
+      hash: md5
+      md5: 8d9da0140aac758637c2ff4641f9e635
+      size: 1043
+    params:
+      params.yaml:
+        yolo_params.batch_size: 8
+        yolo_params.conf_threshold: 0.4
+        yolo_params.imgsz: 320
+    outs:
+    - path: scores.json
+      hash: md5
+      md5: a211fab4ad205d53c0d48cb199b8e623
+      size: 142

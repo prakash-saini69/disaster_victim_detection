@@ -1,5 +1,5 @@
-from src.victimDetector.config.configuration import ConfigurationManager
-from src.victimDetector.components.model_training import Training
+from victimDetector.config.configuration import ConfigurationManager
+from victimDetector.components.model_training import Training
 from victimDetector import logger
 
 

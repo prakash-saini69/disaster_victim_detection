@@ -1,5 +1,5 @@
-from src.victimDetector.config.configuration import ConfigurationManager
-from src.victimDetector.components.model_evaluation import Evaluation 
+from victimDetector.config.configuration import ConfigurationManager
+from victimDetector.components.model_evaluation import Evaluation 
 from victimDetector import logger
 
 STAGE_NAME = "Evaluation stage"

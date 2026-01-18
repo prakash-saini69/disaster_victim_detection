@@ -1,10 +1,10 @@
 
 import os
-from src.victimDetector.constants import *
-from src.victimDetector.utils.common import read_yaml, create_directories
+from victimDetector.constants import *
+from victimDetector.utils.common import read_yaml, create_directories
 from pathlib import Path
 
-from src.victimDetector.entity.config_entity import (DataIngestionConfig, PrepareBaseModelConfig , TrainingConfig , EvaluationConfig)
+from victimDetector.entity.config_entity import (DataIngestionConfig, PrepareBaseModelConfig , TrainingConfig , EvaluationConfig)
 
 
 

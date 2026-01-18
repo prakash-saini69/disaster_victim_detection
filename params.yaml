@@ -6,7 +6,7 @@ data_ingestion:
 
 # YOLOv8 Parameters
 yolo_params:
-  epochs: 2
+  epochs: 4
   batch_size: 8   # Lower for CPU/Laptop GPU
   imgsz: 320 
   model_type: yolov8n.pt 

@@ -3,8 +3,8 @@ import os
 import zipfile
 import gdown
 from victimDetector import logger
-from src.victimDetector.utils.common import get_size
-from src.victimDetector.entity.config_entity import DataIngestionConfig
+from victimDetector.utils.common import get_size
+from victimDetector.entity.config_entity import DataIngestionConfig
 
 class DataIngestion:
     def __init__(self, config: DataIngestionConfig):

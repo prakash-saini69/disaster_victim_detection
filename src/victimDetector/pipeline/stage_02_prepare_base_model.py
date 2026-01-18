@@ -1,6 +1,6 @@
 
-from src.victimDetector.config.configuration import ConfigurationManager
-from src.victimDetector.components.prepare_base_model import PrepareBaseModel
+from victimDetector.config.configuration import ConfigurationManager
+from victimDetector.components.prepare_base_model import PrepareBaseModel
 from victimDetector import logger
 
 

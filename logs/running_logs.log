@@ -213,3 +213,47 @@ x==========x]
 [2026-01-18 18:38:53,302: INFO: main: >>>>>> stage Evaluation stage completed <<<<<<
 
 x==========x]
+[2026-01-18 19:21:42,298: INFO: stage_01_data_ingestion: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2026-01-18 19:21:42,301: INFO: common: YAML file loaded successfully: config\config.yaml]
+[2026-01-18 19:21:42,302: INFO: common: YAML file loaded successfully: params.yaml]
+[2026-01-18 19:21:42,304: INFO: common: created directory at: artifacts]
+[2026-01-18 19:21:42,304: INFO: common: created directory at: artifacts/data_ingestion]
+[2026-01-18 19:21:42,305: INFO: data_ingestion: Downloading data from https://drive.google.com/file/d/1Wc_m82ujKWaTG9fQ-gz_lr28YPNcV-FD/view into file artifacts/data_ingestion/data.zip]
+[2026-01-18 19:25:34,018: INFO: data_ingestion: Downloaded data from https://drive.google.com/file/d/1Wc_m82ujKWaTG9fQ-gz_lr28YPNcV-FD/view into file artifacts/data_ingestion/data.zip]
+[2026-01-18 19:29:39,912: INFO: stage_01_data_ingestion: >>>>>> stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2026-01-18 19:48:32,005: INFO: stage_02_prepare_base_model: *******************]
+[2026-01-18 19:48:32,005: INFO: stage_02_prepare_base_model: >>>>>> stage Prepare base model started <<<<<<]
+[2026-01-18 19:48:32,018: INFO: common: YAML file loaded successfully: config\config.yaml]
+[2026-01-18 19:48:32,020: INFO: common: YAML file loaded successfully: params.yaml]
+[2026-01-18 19:48:32,021: INFO: common: created directory at: artifacts]
+[2026-01-18 19:48:32,021: INFO: common: created directory at: artifacts/prepare_base_model]
+[2026-01-18 19:48:34,908: INFO: stage_02_prepare_base_model: >>>>>> stage Prepare base model completed <<<<<<
+
+x==========x]
+[2026-01-18 19:48:57,453: INFO: stage_03_model_training: *******************]
+[2026-01-18 19:48:57,453: INFO: stage_03_model_training: >>>>>> stage Training started <<<<<<]
+[2026-01-18 19:48:57,456: INFO: common: YAML file loaded successfully: config\config.yaml]
+[2026-01-18 19:48:57,460: INFO: common: YAML file loaded successfully: params.yaml]
+[2026-01-18 19:48:57,460: INFO: common: created directory at: artifacts]
+[2026-01-18 19:48:57,461: INFO: common: created directory at: artifacts\training]
+[2026-01-18 20:34:39,014: INFO: stage_03_model_training: >>>>>> stage Training completed <<<<<<
+
+x==========x]
+[2026-01-18 20:35:43,860: INFO: stage_04_model_evaluation: *******************]
+[2026-01-18 20:35:43,861: INFO: stage_04_model_evaluation: >>>>>> stage Evaluation stage started <<<<<<]
+[2026-01-18 20:35:43,871: INFO: common: YAML file loaded successfully: config\config.yaml]
+[2026-01-18 20:35:43,873: INFO: common: YAML file loaded successfully: params.yaml]
+[2026-01-18 20:35:43,873: INFO: common: created directory at: artifacts]
+[2026-01-18 20:37:08,628: INFO: common: JSON file saved at: scores.json]
+[2026-01-18 20:37:08,629: INFO: common: JSON file saved at: scores.json]
+[2026-01-18 20:37:09,972: INFO: _client: HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"]
+[2026-01-18 20:37:09,976: INFO: helpers: Accessing as prakashmali6556]
+[2026-01-18 20:37:11,125: INFO: _client: HTTP Request: GET https://dagshub.com/api/v1/repos/prakashmali6556/disaster_victim_detection "HTTP/1.1 200 OK"]
+[2026-01-18 20:37:12,158: INFO: _client: HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"]
+[2026-01-18 20:37:12,159: INFO: helpers: Initialized MLflow to track repo "prakashmali6556/disaster_victim_detection"]
+[2026-01-18 20:37:12,160: INFO: helpers: Repository prakashmali6556/disaster_victim_detection initialized!]
+[2026-01-18 20:37:20,147: INFO: stage_04_model_evaluation: >>>>>> stage Evaluation stage completed <<<<<<
+
+x==========x]
