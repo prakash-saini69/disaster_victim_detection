@@ -204,5 +204,7 @@ tmp/
 temp/
 
 
+# to avoid stati videos 
+
 
 static/predictions/
