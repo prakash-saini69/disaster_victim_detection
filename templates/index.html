@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disaster Victim Detection AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #3B82F6;
+            --bg: #0f172a;
+            --card: #1e293b;
+            --text: #f1f5f9;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            width: 100%;
+            max-width: 500px;
+            padding: 2rem;
+        }
+
+        h1 {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            background: -webkit-linear-gradient(45deg, #60a5fa, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p {
+            color: #94a3b8;
+            margin-bottom: 2rem;
+        }
+
+        /* Upload Box */
+        .upload-box {
+            background-color: var(--card);
+            border: 2px dashed #475569;
+            border-radius: 1rem;
+            padding: 3rem 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .upload-box:hover {
+            border-color: var(--primary);
+            background-color: #1e293b80;
+        }
+
+        .icon {
+            font-size: 3rem;
+            color: #64748b;
+            margin-bottom: 1rem;
+        }
+
+        input[type="file"] {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        /* Button */
+        .btn-predict {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            margin-top: 2rem;
+            width: 100%;
+            transition: transform 0.1s;
+        }
+
+        .btn-predict:active {
+            transform: scale(0.98);
+        }
+
+        /* Loading Overlay */
+        #loading {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.9);
+            z-index: 50;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #334155;
+            border-top: 5px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 1rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Disaster Victim Detection</h1>
+        <p>Upload drone/CCTV footage to detect survivors.</p>
+
+        <form action="/predict" method="POST" enctype="multipart/form-data" onsubmit="showLoading()">
+            <div class="upload-box">
+                <div class="icon">📁</div>
+                <h3 id="filename">Click or Drag Video Here</h3>
+                <p style="font-size: 0.8rem; margin:0;">Supports .mp4, .avi, .mov</p>
+                <input type="file" name="video" accept="video/*" onchange="updateFilename(this)" required>
+            </div>
+
+            <button type="submit" class="btn-predict">Analyze Footage</button>
+        </form>
+
+        {% if error %}
+        <p style="color: #ef4444; margin-top: 1rem;">{{ error }}</p>
+        {% endif %}
+    </div>
+
+    <div id="loading">
+        <div class="spinner"></div>
+        <h3 style="color: white;">Processing Video...</h3>
+        <p>This may take a moment depending on file size.</p>
+    </div>
+
+    <script>
+        function updateFilename(input) {
+            const fileName = input.files[0].name;
+            document.getElementById('filename').innerText = fileName;
+        }
+
+        function showLoading() {
+            document.getElementById('loading').style.display = 'flex';
+        }
+    </script>
+</body>
+</html>
