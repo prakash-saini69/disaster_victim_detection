@@ -54,7 +54,7 @@ jobs:
       - name: Download Model from S3
         run: |
           mkdir -p artifacts/training
-          aws s3 cp s3://your-s3-bucket-name/model.pt artifacts/training/model.pt
+          aws s3 cp s3://disaster-model-storage-2026/model.pt artifacts/training/model.pt
 
       - name: Build, tag, and push image to Amazon ECR
         env:
