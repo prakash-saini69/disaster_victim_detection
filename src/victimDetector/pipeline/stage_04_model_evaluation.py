@@ -18,7 +18,7 @@ class EvaluationPipeline:
         evaluation.evaluation()
         evaluation.save_score()
         # This logs the results to DagsHub
-        evaluation.log_into_mlflow()
+        # evaluation.log_into_mlflow()
 
 if __name__ == '__main__':
     try:
